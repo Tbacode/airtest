@@ -28,7 +28,7 @@ auto_setup(__file__)
 
 def init(packagename):
     dev = Android()
-    if dev.is_locked():
+    if not dev.is_locked():
         dev.unlock()
     dev.clear_app(packagename)
     dev.start_app(packagename)

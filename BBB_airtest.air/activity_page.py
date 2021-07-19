@@ -8,7 +8,7 @@ class ActivityPage():
     def __init__(self):
         self.dayOfweek = str(datetime.now().isoweekday())
         self.week_act_dict = {
-            "1": {"img_bt":"", "assert_img":""},
+            "1": {"img_bt":Template(r"tpl1626675215412.png", record_pos=(-0.385, -0.415), resolution=(1080, 1920)), "assert_img":Template(r"tpl1626675233284.png", record_pos=(-0.002, -0.531), resolution=(1080, 1920))},
             "2": {"img_bt":"", "assert_img":""},
             "3": {"img_bt":Template(r"tpl1626253495511.png", record_pos=(-0.381, -0.185), resolution=(1080, 1920)), "assert_img":Template(r"tpl1626254570274.png", record_pos=(0.006, -0.537), resolution=(1080, 1920))},
             "4": {"img_bt":Template(r"tpl1626336268506.png", record_pos=(-0.384, -0.413), resolution=(1080, 1920)), "assert_img":Template(r"tpl1626336292054.png", record_pos=(0.003, -0.535), resolution=(1080, 1920))},

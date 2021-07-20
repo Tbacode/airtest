@@ -42,6 +42,7 @@ init(packagename)
 sleep(5)
 from newuser_skip import user_skip
 user_skip.run_skip()
+sleep(2)
 # 关闭弹窗
 touch(wait(Template(r"tpl1626074230882.png", record_pos=(0.361, -0.617), resolution=(1080, 1920))))
 sleep(3)
@@ -52,6 +53,17 @@ sleep(2)
 from settingpage import set_page
 set_page.run_setpage()
 sleep(3)
+
+# 活动
+# from activity_page import act
+# img_dict = act.run_activity()
+# touch(img_dict["img_bt"])
+# assert_exists(img_dict["assert_img"], "每日活动是否配对正常")
+# # 如果是周二，就直接领取
+# from datetime import datetime
+# if str(datetime.now().isoweekday()) == "2":
+#     touch(Template(r"tpl1626754786899.png", record_pos=(-0.004, 0.457), resolution=(1080, 1920)))
+sleep(2)
 # 进入商店
 touch((99, 1820))
 sleep(3)
@@ -73,8 +85,8 @@ survivial.run_survivial()
 sleep(3)
 touch(home_bt)
 
-from activity_page import act
-img_dict = act.run_activity()
-touch(img_dict["img_bt"])
-assert_exists(img_dict["assert_img"], "每日活动是否配对正常")
+# from activity_page import act
+# img_dict = act.run_activity()
+# touch(img_dict["img_bt"])
+# assert_exists(img_dict["assert_img"], "每日活动是否配对正常")
 simple_report(__file__)

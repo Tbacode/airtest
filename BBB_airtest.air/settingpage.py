@@ -62,24 +62,25 @@ class SettingPage():
         self.__click(self.terms_bt, 2)
         dev = Android()
         act_name = dev.get_top_activity_name()
+        sleep(2)
         assert_equal(act_name, "com.android.chrome/org.chromium.chrome.browser.ChromeTabbedActivity", "服务条款按钮是否正常跳出")
         sleep(5)
         keyevent("KEYCODE_BACK")
         # 点击隐私链接
         self.__click(self.privacy_bt, 2)
         act_name = dev.get_top_activity_name()
+        sleep(2)
         assert_equal(act_name, "com.android.chrome/org.chromium.chrome.browser.ChromeTabbedActivity", "隐私协议按钮是否正常跳出")
         sleep(5)
         keyevent("KEYCODE_BACK")
         # 点击联系我们
         self.__click(self.contact_bt)
         act_name = dev.get_top_activity_name()
+        sleep(2)
         assert_equal(act_name, "com.google.android.gm/.ComposeActivityGmailExternal", "邮件弹窗是否正常弹出")
         dev.start_app("com.brick.breaker.ball.shooting.blast") # 进入邮箱后，返回不能回到游戏，直接调用start方法进入游戏
-        # 关闭设置弹窗
-        self.__click(self.close_bt)
         # 点击开启fb登录弹窗
-        self.__click(self.save_bt)
+        self.__click(self.save_bt, 2)
         fb_bt = wait(Template(r"tpl1625723568304.png", record_pos=(-0.001, 0.107), resolution=(1080, 1920)))
         self.__click(fb_bt, 2)
         assert_exists(Template(r"tpl1625723667791.png", record_pos=(0.0, -0.469), resolution=(1080, 1920)), "fb登录成功")
@@ -104,3 +105,5 @@ set_page = SettingPage()
 # generate html report
 # from airtest.report.report import simple_report
 # simple_report(__file__, logpath=True)
+
+

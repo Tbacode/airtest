@@ -25,6 +25,7 @@ class ShopPage():
         sleep(3)
         # 支付弹窗验证
         google_pay = self.dev.get_top_activity_name()
+        sleep(2)
         assert_equal(google_pay, "com.android.vending/com.google.android.finsky.billing.acquire.SheetUiBuilderHostActivity", "google支付弹窗是否正常")
         
     def run_shop(self):

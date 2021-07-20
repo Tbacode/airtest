@@ -9,7 +9,7 @@ class ActivityPage():
         self.dayOfweek = str(datetime.now().isoweekday())
         self.week_act_dict = {
             "1": {"img_bt":Template(r"tpl1626675215412.png", record_pos=(-0.385, -0.415), resolution=(1080, 1920)), "assert_img":Template(r"tpl1626675233284.png", record_pos=(-0.002, -0.531), resolution=(1080, 1920))},
-            "2": {"img_bt":"", "assert_img":""},
+            "2": {"img_bt":Template(r"tpl1626753717895.png", record_pos=(-0.381, -0.415), resolution=(1080, 1920)), "assert_img":Template(r"tpl1626753732349.png", record_pos=(0.0, -0.527), resolution=(1080, 1920))},
             "3": {"img_bt":Template(r"tpl1626253495511.png", record_pos=(-0.381, -0.185), resolution=(1080, 1920)), "assert_img":Template(r"tpl1626254570274.png", record_pos=(0.006, -0.537), resolution=(1080, 1920))},
             "4": {"img_bt":Template(r"tpl1626336268506.png", record_pos=(-0.384, -0.413), resolution=(1080, 1920)), "assert_img":Template(r"tpl1626336292054.png", record_pos=(0.003, -0.535), resolution=(1080, 1920))},
             "5": {"img_bt":Template(r"tpl1626415428434.png", record_pos=(-0.384, -0.408), resolution=(1080, 1920)), "assert_img":Template(r"tpl1626415451780.png", record_pos=(-0.003, -0.535), resolution=(1080, 1920))},

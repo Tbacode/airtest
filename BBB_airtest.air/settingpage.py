@@ -33,7 +33,7 @@ class SettingPage():
         self.save_bt = wait(Template(r"tpl1625712870993.png", record_pos=(-0.001, 0.395), resolution=(1080, 1920)))
 
 
-        self.close_bt = wait(Template(r"tpl1625482240838.png", record_pos=(0.41, -0.569), resolution=(1080, 1920)))
+        self.close_bt = wait(Template(r"close.png", record_pos=(0.41, -0.569), resolution=(1080, 1920)))
     def __double_click(self, bt, timeout=0.05):
         touch(bt)
         sleep(timeout)
@@ -46,7 +46,7 @@ class SettingPage():
     def __return_en_language(self):
         self.__click(self.language_bt, 1)
         self.__click(wait(Template(r"tpl1625560229998.png", record_pos=(-0.006, -0.542), resolution=(1080, 1920))), 2)
-        self.__click(Template(r"tpl1625482240838.png", record_pos=(0.41, -0.569), resolution=(1080, 1920)), 1)
+        self.__click(Template(r"close.png", record_pos=(0.41, -0.569), resolution=(1080, 1920)), 1)
         
     def run_setpage(self):
         self.__click(self.music_bt, 1)
@@ -56,7 +56,7 @@ class SettingPage():
         self.__click(Template(r"tpl1625558654442.png", record_pos=(-0.005, 0.663), resolution=(1080, 1920)), 2)
         assert_exists(Template(r"tpl1625559138816.png", record_pos=(-0.002, -0.706), resolution=(1080, 1920)), "语言是否切换成功")
 
-        self.__click(Template(r"tpl1625482240838.png", record_pos=(0.41, -0.569), resolution=(1080, 1920)), 2)
+        self.__click(Template(r"close.png", record_pos=(0.41, -0.569), resolution=(1080, 1920)), 2)
         self.__return_en_language()
         # 点击条款链接
         self.__click(self.terms_bt, 2)
@@ -84,7 +84,8 @@ class SettingPage():
         fb_bt = wait(Template(r"tpl1625723568304.png", record_pos=(-0.001, 0.107), resolution=(1080, 1920)))
         self.__click(fb_bt, 2)
         assert_exists(Template(r"tpl1625723667791.png", record_pos=(0.0, -0.469), resolution=(1080, 1920)), "fb登录成功")
-        self.__click(Template(r"tpl1625482240838.png", record_pos=(0.41, -0.569), resolution=(1080, 1920)), 2)
+        # 替换固定资源图片
+        self.__click(Template(r"close.png", record_pos=(0.41, -0.569), resolution=(1080, 1920)), 2)
         load_success = wait(Template(r"tpl1625723780790.png", record_pos=(0.206, 0.287), resolution=(1080, 1920)))
         self.__click(load_success, 2)
         confirm_text = wait(Template(r"tpl1625723856907.png", record_pos=(-0.006, -0.274), resolution=(1080, 1920)))

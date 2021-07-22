@@ -14,7 +14,7 @@ class SurvivialPage():
         
     def __quit(self):
         sleep(3)
-        pause_bt = wait(Template(r"tpl1626241838319.png", record_pos=(0.282, -0.728), resolution=(1080, 1920)))
+        pause_bt = wait(Template(r"tpl1626854418664.png", record_pos=(0.423, -0.798), resolution=(1080, 1920)))
         self.__click(pause_bt, 2)
         home_bt = wait(Template(r"tpl1626241887157.png", record_pos=(0.285, -0.375), resolution=(1080, 1920)))
         self.__click(home_bt, 2)
@@ -26,7 +26,7 @@ class SurvivialPage():
         self.__click(self.rabbit, 2)
         self.__quit()
         # 关闭
-        close_bt = wait(Template(r"tpl1626242226091.png", record_pos=(0.365, -0.477), resolution=(1080, 1920)))
+        close_bt = wait(Template(r"close.png", record_pos=(0.365, -0.477), resolution=(1080, 1920)))
         self.__click(close_bt, 1)
         # 再次进入
         self.__click(self.rabbit, 2)

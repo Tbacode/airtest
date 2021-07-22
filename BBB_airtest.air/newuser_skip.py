@@ -19,7 +19,7 @@ class UserSkip():
         self.home_bt = wait(Template(r"tpl1626070920784.png", record_pos=(0.42, -0.325), resolution=(1080, 1920)))
         
     def __exit_menu(self):
-        self.close_bt = wait(Template(r"tpl1626071435302.png", record_pos=(0.396, -0.396), resolution=(1080, 1920)))
+        self.close_bt = wait(Template(r"close.png", record_pos=(0.425, -0.549), resolution=(1080, 1920)))
         self.cancel_bt = wait(Template(r"tpl1626071462020.png", record_pos=(-0.206, 0.19), resolution=(1080, 1920)))
         self.exit_bt = wait(Template(r"tpl1626071531930.png", record_pos=(0.276, 0.189), resolution=(1080, 1920)))
 
@@ -69,13 +69,13 @@ class UserSkip():
         self.__click(self.continue_bt)
         # 判断是否存在账号同步弹窗
         if exists(Template(r"tpl1626145203687.png", record_pos=(0.012, -0.614), resolution=(1080, 1920))):
-            self.__click(wait(Template(r"tpl1626145218550.png", record_pos=(0.425, -0.549), resolution=(1080, 1920))), 2)
+            self.__click(wait(Template(r"close.png", record_pos=(0.425, -0.549), resolution=(1080, 1920))), 2)
 
 
-            pause_bt = wait(Template(r"tpl1626072098482.png", record_pos=(0.423, -0.798), resolution=(1080, 1920)))
+            pause_bt = wait(Template(r"tpl1626854418664.png", record_pos=(0.423, -0.798), resolution=(1080, 1920)))
             self.__click(pause_bt, 2)
         else:
-            pause_bt = wait(Template(r"tpl1626072098482.png", record_pos=(0.423, -0.798), resolution=(1080, 1920)))
+            pause_bt = wait(Template(r"tpl1626854418664.png", record_pos=(0.423, -0.798), resolution=(1080, 1920)))
             # 点击暂停按钮
             self.__double_click(pause_bt, 1)
         # self.__click(pause_bt, 2)

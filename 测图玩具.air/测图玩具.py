@@ -16,15 +16,15 @@ from AdbOperation import AdbOperation
 
 # 点击进入首张图片
 def inter_firstPic():
-    if wait(Template(r"tpl1606727235889.png", record_pos=(-0.135, -0.509), resolution=(1440, 2880)), 600):
+    if wait(Template(r"tpl1626776308205.png", record_pos=(-0.394, -0.382), resolution=(1080, 1920)), 600):
 
-        touch((325, 1787))
+        touch((280, 850))
     
 # 点击paint All
 def click_paintAll():
-    if wait(Template(r"tpl1606727439559.png", record_pos=(0.138, -0.91), resolution=(1440, 2880)), 600):
+    if wait(Template(r"tpl1626776359999.png", record_pos=(0.142, -0.795), resolution=(1080, 1920)), 600):
 
-        touch((1260, 430))
+        touch((890, 300))
     
 # 判断是否App在前台
 def is_APP_resumeActivity(launch_activity):
@@ -39,10 +39,13 @@ def is_APP_resumeActivity(launch_activity):
 # 判断是否普通图完成
 def is_normalPic_finish():
     sleep(10)
-    if wait(Template(r"tpl1606723301999.png", record_pos=(-0.003, 0.625), resolution=(1440, 2880))):
-        touch(exists(Template(r"tpl1606723301999.png", record_pos=(-0.003, 0.625), resolution=(1440, 2880))))
+    try:
+        wait(Template(r"tpl1626772471368.png", record_pos=(-0.008, 0.636), resolution=(1080, 1920)))
+    except:
+        click_animatedPic_continue()
     else:
-        wait(Template(r"tpl1606723301999.png", record_pos=(-0.003, 0.625), resolution=(1440, 2880)),20,click_animatedPic_continue(), 0.5)
+        sleep(3)
+        touch(Template(r"tpl1626772471368.png", record_pos=(-0.008, 0.636), resolution=(1080, 1920)))
 # 动图完成情况继续
 def click_animatedPic_continue():
     try:
@@ -51,9 +54,12 @@ def click_animatedPic_continue():
         is_normalPic_finish()
     else:
         click(next_bt)
-        tag = wait(Template(r"tpl1606723301999.png", record_pos=(-0.003, 0.625), resolution=(1440, 2880)), 600)
+        sleep(3)
+        tag = wait(Template(r"tpl1626776155983.png", record_pos=(0.001, 0.635), resolution=(1080, 1920)))
+        sleep(3)
         if tag:
             touch(tag)
+            sleep(2)
         
 # APP进入后台后再次进入前台
 def set_activity_backup():
@@ -68,14 +74,14 @@ def app_wakeup(packagename, launch_activity):
 # main方法入口
 def main(packagename, launch_activity):
     inter_firstPic()
-    sleep(5)
+    sleep(3)
     if not is_APP_resumeActivity(launch_activity):
         set_activity_backup()
         sleep(3.0)
         app_wakeup(packagename, launch_activity)
     click_paintAll()
     is_normalPic_finish()
-    sleep(5)
+    sleep(3)
     if not is_APP_resumeActivity(launch_activity):
         set_activity_backup()
         sleep(3.0)
@@ -85,8 +91,8 @@ def main(packagename, launch_activity):
     
 
 packagename = "com.pixel.art.coloring.by.number"
-launch_activity = ".UnityPlayerActivity"
-index = 3 # 每日终审图数量
+launch_activity = "com.unity3d.player.UnityPlayerActivity"
+index = 30 # 每日终审图数量
 while index != 0:
     main(packagename, launch_activity)
     index -= 1

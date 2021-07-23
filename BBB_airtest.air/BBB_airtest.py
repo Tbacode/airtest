@@ -89,8 +89,8 @@ def init(packagename):
 # img_dict = act.run_activity()
 # touch(img_dict["img_bt"])
 # assert_exists(img_dict["assert_img"], "每日活动是否配对正常")
-# from level_finish import levelfinish
-# levelfinish.run_level_main()
-dev = Android()
-print(dev.get_top_activity_name())
+from level_finish import levelfinish
+levelfinish.run_level_main()
+# dev = Android()
+# print(dev.get_top_activity_name())
 simple_report(__file__)

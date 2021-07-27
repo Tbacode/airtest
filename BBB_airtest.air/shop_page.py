@@ -11,8 +11,6 @@ from airtest.core.android.android import Android
 # script content
 class ShopPage():
     def __init__(self):
-        
-        self.jp_340_bt = wait(Template(r"tpl1626156136994.png", record_pos=(0.269, -0.663), resolution=(1080, 1920)))
         self.dev = Android()
         
     def __click(self, bt, timeout=0):
@@ -21,7 +19,7 @@ class ShopPage():
         
     def __click_pay(self):
         # 购买jp340
-        self.__click(self.jp_340_bt, 2)
+        self.__click(Template(r"tpl1627375430637.png", record_pos=(0.269, -0.688), resolution=(1080, 1920)), 2)
         sleep(3)
         # 支付弹窗验证
         google_pay = self.dev.get_top_activity_name()
@@ -29,6 +27,9 @@ class ShopPage():
         assert_equal(google_pay, "com.android.vending/com.google.android.finsky.billing.acquire.SheetUiBuilderHostActivity", "google支付弹窗是否正常")
         
     def run_shop(self):
+        swipe((524, 1560), (524, 721))
+        swipe((524, 1360), (524, 721))
+
         if exists(Template(r"tpl1626156645965.png", record_pos=(0.003, 0.036), resolution=(1080, 1920))):
             assert_exists(Template(r"tpl1626156945964.png", record_pos=(0.004, 0.037), resolution=(1080, 1920)), "进入商店页面是否正常")
         # 支付调用

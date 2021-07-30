@@ -33,14 +33,25 @@ class LevelFinish():
                          record_pos=(0.002, 0.383),
                          resolution=(1080, 1920)))
             self.index += 1
-            sleep(1)
-            if self.index >= 19:
-                if exists(
-                        Template(r"tpl1627019953062.png",
+            print("-----level_num" + str(self.index))
+            if self.index == 20:
+                sleep(3)
+                try:
+                    assert_exists(Template(r"tpl1627458115954.png", record_pos=(0.021, 0.257), resolution=(1080, 1920)), "判断小猪银行弹出时机")
+                except:
+                    print("小猪银行弹出失败")
+                else:
+                    touch(Template(r"close.png",
+                                 record_pos=(0.361, -0.617),
+                                 resolution=(1080, 1920)))
+                    sleep(1)
+            if self.index > 20:
+                sleep(4)
+                if exists(Template(r"tpl1627019953062.png",
                                  record_pos=(0.003, -0.67),
                                  resolution=(1080, 1920))):
-                    touch(
-                        Template(r"close.png",
+                    print(str(self.index) + "进入关卡数")
+                    touch(Template(r"close.png",
                                  record_pos=(0.361, -0.617),
                                  resolution=(1080, 1920)))
                     sleep(1)
@@ -465,6 +476,13 @@ class LevelFinish():
             sleep(5)
         else:
             return "关卡22， 进入失败"
+        
+        if str(datetime.now().isoweekday()) == "3":
+            try:
+                assert_exists(Template(r"tpl1626254570274.png", record_pos=(0.006, -0.537), resolution=(1080, 1920)), "存在周三活动完成判断")
+                touch(Template(r"claim.png",record_pos=(-0.004, 0.457),resolution=(1080, 1920)))
+            except:
+                print("周三活动未弹出")
 
         # 23
         self.level_start(timeout=5)
@@ -475,6 +493,14 @@ class LevelFinish():
             sleep(5)
         else:
             return "关卡23， 进入失败"
+        
+        if str(datetime.now().isoweekday()) == "3":
+            try:
+                assert_exists(Template(r"tpl1626254570274.png", record_pos=(0.006, -0.537), resolution=(1080, 1920)), "存在周三活动完成判断")
+                touch(Template(r"claim.png",record_pos=(-0.004, 0.457),resolution=(1080, 1920)))
+            except:
+                print("周三活动未弹出")
+            
 
         # 24
         self.level_start(timeout=5)
@@ -899,6 +925,16 @@ class LevelFinish():
                          resolution=(1080, 1920)))
         except:
             print("汽车活动未开启")
+        
+        try:
+            assert_exists(Template(r"tpl1627540068435.png", record_pos=(0.004, -0.533), resolution=(1080, 1920)), "判断仙人掌活动开启")
+            touch(
+                Template(r"close.png",
+                         record_pos=(0.361, -0.617),
+                         resolution=(1080, 1920)))
+        except:
+            print("仙人掌活动未开启")
+
             
 
         # 60

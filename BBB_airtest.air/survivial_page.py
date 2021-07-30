@@ -24,6 +24,9 @@ class SurvivialPage():
         
     def run_survivial(self):
         self.__click(self.rabbit, 2)
+        sleep(7)
+        touch((295, 975))
+        sleep(2)
         self.__quit()
         # 关闭
         close_bt = wait(Template(r"close.png", record_pos=(0.365, -0.477), resolution=(1080, 1920)))

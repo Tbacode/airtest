@@ -47,6 +47,13 @@ sleep(2)
 touch(wait(Template(r"close.png", record_pos=(0.361, -0.617), resolution=(1080, 1920))))
 sleep(3)
 
+# 进入商店
+touch((99, 1820))
+from shop_page import shop
+shop.run_shop()
+# 其余按钮坐标相对home来定，需要切换回home
+touch(home_bt)
+
 from level_finish import levelfinish
 levelfinish.run_level_main()
 
@@ -57,23 +64,15 @@ from settingpage import set_page
 set_page.run_setpage()
 sleep(3)
 
-# 活动
-# from activity_page import act
-# img_dict = act.run_activity()
-# touch(img_dict["img_bt"])
-# assert_exists(img_dict["assert_img"], "每日活动是否配对正常")
-# 如果是周二，就直接领取
-# from datetime import datetime
-# if str(datetime.now().isoweekday()) == "2":
-#     touch(Template(r"claim.png", record_pos=(-0.004, 0.457), resolution=(1080, 1920)))
-# 进入商店
-touch((99, 1820))
-from shop_page import shop
-shop.run_shop()
+
+# # 进入商店
+# touch((99, 1820))
+# from shop_page import shop
+# shop.run_shop()
 # 其余按钮坐标相对home来定，需要切换回home
-touch(home_bt)
-if exists(Template(r"close.png", record_pos=(0.361, -0.617), resolution=(1080, 1920))):
-    touch(exists(Template(r"close.png", record_pos=(0.361, -0.617), resolution=(1080, 1920))))
+# touch(home_bt)
+# if exists(Template(r"close.png", record_pos=(0.361, -0.617), resolution=(1080, 1920))):
+#     touch(exists(Template(r"close.png", record_pos=(0.361, -0.617), resolution=(1080, 1920))))
 # 进入球背包
 touch((295, 1800))
 # 等待滑动
@@ -91,3 +90,5 @@ touch(home_bt)
 # touch(img_dict["img_bt"])
 # assert_exists(img_dict["assert_img"], "每日活动是否配对正常")
 # simple_report(__file__)
+
+

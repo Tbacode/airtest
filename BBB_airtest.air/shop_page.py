@@ -19,7 +19,7 @@ class ShopPage():
         
     def __click_pay(self):
         # 购买jp340
-        self.__click(Template(r"tpl1627375430637.png", record_pos=(0.269, -0.688), resolution=(1080, 1920)), 2)
+        self.__click((837, 1306), 2)
         sleep(3)
         # 支付弹窗验证
         google_pay = self.dev.get_top_activity_name()
@@ -27,11 +27,18 @@ class ShopPage():
         assert_equal(google_pay, "com.android.vending/com.google.android.finsky.billing.acquire.SheetUiBuilderHostActivity", "google支付弹窗是否正常")
         
     def run_shop(self):
-        swipe((524, 1560), (524, 721))
-        swipe((524, 1360), (524, 721))
+#         swipe((524, 1560), (524, 721))
+#         swipe((524, 1360), (524, 721))
+        sleep(3)
 
         if exists(Template(r"tpl1626156645965.png", record_pos=(0.003, 0.036), resolution=(1080, 1920))):
             assert_exists(Template(r"tpl1626156945964.png", record_pos=(0.004, 0.037), resolution=(1080, 1920)), "进入商店页面是否正常")
+        swipe((535, 258), (475, 1536), duration=2)
+        sleep(1)
+        self.__click((822, 228), 2)
+        self.__click(wait(Template(r"tpl1626157754670.png", record_pos=(0.004, 0.692), resolution=(1080, 1920))), 2)
+        assert_exists(Template(r"tpl1626157781294.png", record_pos=(-0.008, -0.616), resolution=(1080, 1920)), "支付成功弹窗是否正常弹出")
+        self.__click((50,50),3)
         # 支付调用
         self.__click_pay()
         # 支付取消

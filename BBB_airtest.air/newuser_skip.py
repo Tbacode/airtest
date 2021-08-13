@@ -52,16 +52,15 @@ class UserSkip():
     def run_skip(self):
         dev = Android()
         # 点击服务条款链接
-        self.__click(self.terms_link, 2)
+        self.__click(self.terms_link, 5)
         act_name = dev.get_top_activity_name()
-        sleep(5)
+        print(act_name)
         assert_equal(act_name, "com.android.chrome/org.chromium.chrome.browser.ChromeTabbedActivity", "服务条款链接是否正常跳出")
         
         keyevent("KEYCODE_BACK")
         # 点击隐私协议链接
-        self.__click(self.privacy_link, 2)
+        self.__click(self.privacy_link, 5)
         act_name = dev.get_top_activity_name()
-        sleep(5)
         assert_equal(act_name, "com.android.chrome/org.chromium.chrome.browser.ChromeTabbedActivity", "隐私协议链接是否正常跳出")
         
         keyevent("KEYCODE_BACK")
@@ -120,4 +119,6 @@ class UserSkip():
         
 
 user_skip = UserSkip()
+
+
 

@@ -30,7 +30,8 @@ class SettingPage():
 
         self.contact_bt = wait(Template(r"tpl1625712858434.png", record_pos=(0.0, 0.231), resolution=(1080, 1920)))
 
-        self.save_bt = wait(Template(r"tpl1625712870993.png", record_pos=(-0.001, 0.395), resolution=(1080, 1920)))
+        self.save_bt = wait(Template(r"tpl1627889922603.png", record_pos=(0.004, 0.405), resolution=(1080, 1920)))
+
 
 
         self.close_bt = wait(Template(r"close.png", record_pos=(0.41, -0.569), resolution=(1080, 1920)))
@@ -60,18 +61,20 @@ class SettingPage():
         self.__return_en_language()
         # 点击条款链接
         self.__click(self.terms_bt, 2)
+        sleep(5)
         dev = Android()
         act_name = dev.get_top_activity_name()
-        sleep(2)
+        
         assert_equal(act_name, "com.android.chrome/org.chromium.chrome.browser.ChromeTabbedActivity", "服务条款按钮是否正常跳出")
-        sleep(5)
+        sleep(2)
         keyevent("KEYCODE_BACK")
         # 点击隐私链接
         self.__click(self.privacy_bt, 2)
-        act_name = dev.get_top_activity_name()
-        sleep(2)
-        assert_equal(act_name, "com.android.chrome/org.chromium.chrome.browser.ChromeTabbedActivity", "隐私协议按钮是否正常跳出")
         sleep(5)
+        act_name = dev.get_top_activity_name()
+        
+        assert_equal(act_name, "com.android.chrome/org.chromium.chrome.browser.ChromeTabbedActivity", "隐私协议按钮是否正常跳出")
+        sleep(2)
         keyevent("KEYCODE_BACK")
         # 点击联系我们
         self.__click(self.contact_bt)
@@ -81,11 +84,12 @@ class SettingPage():
         dev.start_app("com.brick.breaker.ball.shooting.blast") # 进入邮箱后，返回不能回到游戏，直接调用start方法进入游戏
         # 点击开启fb登录弹窗
         self.__click(self.save_bt, 2)
-        fb_bt = wait(Template(r"tpl1625723568304.png", record_pos=(-0.001, 0.107), resolution=(1080, 1920)))
+        fb_bt = wait(Template(r"tpl1628678204243.png", record_pos=(0.001, 0.27), resolution=(1080, 1920)))
+
         self.__click(fb_bt, 2)
-        assert_exists(Template(r"tpl1625723667791.png", record_pos=(0.0, -0.469), resolution=(1080, 1920)), "fb登录成功")
-        # 替换固定资源图片
-        self.__click(Template(r"close.png", record_pos=(0.41, -0.569), resolution=(1080, 1920)), 2)
+#         assert_exists(Template(r"tpl1625723667791.png", record_pos=(0.0, -0.469), resolution=(1080, 1920)), "fb登录成功")
+#         # 替换固定资源图片
+#         self.__click(Template(r"close.png", record_pos=(0.41, -0.569), resolution=(1080, 1920)), 2)
         load_success = wait(Template(r"tpl1625723780790.png", record_pos=(0.206, 0.287), resolution=(1080, 1920)))
         self.__click(load_success, 2)
         confirm_text = wait(Template(r"tpl1625723856907.png", record_pos=(-0.006, -0.274), resolution=(1080, 1920)))
@@ -106,5 +110,7 @@ set_page = SettingPage()
 # generate html report
 # from airtest.report.report import simple_report
 # simple_report(__file__, logpath=True)
+
+
 
 

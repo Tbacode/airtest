@@ -36,166 +36,206 @@ def is_enter_home():
 packagename = 'com.pixel.art.coloring.by.number'
 launch_activity = 'com.unity3d.player.UnityPlayerActivity'
 
-# dev = init(packagename)
-# sleep(10)
-# agree_bt, terms_link, privacy_link = is_enter_home()
+dev = init(packagename)
+sleep(10)
+agree_bt, terms_link, privacy_link = is_enter_home()
 
-# touch(terms_link)
-# sleep(10)
-# flag = False
-# act_name = dev.get_top_activity_name()
-# try:
-#     assert_equal(act_name, "com.pixel.art.coloring.by.number/talefun.cd.sdk.webview.MyWebViewActivity", "服务条款链接是否正常跳出")
-# except:
-#     print("跳出失败")
-# if exists(Template(r"tpl1628653574859.png", record_pos=(-0.314, -0.596), resolution=(1080, 1920))):
-#     flag = True
-# try:
-#     assert_equal(flag, True, "判断是否正常显示服务条款页面")
-# except:
-#     print("显示失败")
-# keyevent('KEYCODE_BACK')
-# sleep(1)
-# touch(privacy_link)
-# sleep(10)
-# act_name = dev.get_top_activity_name()
-# flag = False
-# try:
-#     assert_equal(act_name, "com.pixel.art.coloring.by.number/talefun.cd.sdk.webview.MyWebViewActivity", "隐私协议链接是否正常跳出")
-# except:
-#     print("跳出失败")
-# if exists(Template(r"tpl1628653574859.png", record_pos=(-0.314, -0.596), resolution=(1080, 1920))):
-#     flag = True
-# try:
-#     assert_equal(flag, True, "判断是否正常显示服务条款页面")
-# except:
-#     print("显示失败")
-# keyevent('KEYCODE_BACK')
-# sleep(3)
-# touch(agree_bt)
-# sleep(1)
+touch(terms_link)
+sleep(10)
+flag = False
+act_name = dev.get_top_activity_name()
+try:
+    assert_equal(act_name, "com.pixel.art.coloring.by.number/talefun.cd.sdk.webview.MyWebViewActivity", "服务条款链接是否正常跳出")
+except:
+    print("跳出失败")
+if exists(Template(r"tpl1628653574859.png", record_pos=(-0.314, -0.596), resolution=(1080, 1920))):
+    flag = True
+try:
+    assert_equal(flag, True, "判断是否正常显示服务条款页面")
+except:
+    print("显示失败")
+keyevent('KEYCODE_BACK')
+sleep(1)
+touch(privacy_link)
+sleep(10)
+act_name = dev.get_top_activity_name()
+flag = False
+try:
+    assert_equal(act_name, "com.pixel.art.coloring.by.number/talefun.cd.sdk.webview.MyWebViewActivity", "隐私协议链接是否正常跳出")
+except:
+    print("跳出失败")
+if exists(Template(r"tpl1628653574859.png", record_pos=(-0.314, -0.596), resolution=(1080, 1920))):
+    flag = True
+try:
+    assert_equal(flag, True, "判断是否正常显示服务条款页面")
+except:
+    print("显示失败")
+keyevent('KEYCODE_BACK')
+sleep(3)
+touch(agree_bt)
+sleep(1)
 
-# # 进入mypainting
-# touch(Template(r"tpl1628654205391.png", record_pos=(0.378, 0.822), resolution=(1080, 1920)))
-# sleep(2)
-# touch(Template(r"tpl1628654222593.png", record_pos=(-0.43, -0.82), resolution=(1080, 1920)))
-# sleep(2)
-# touch(Template(r"tpl1628666829596.png", record_pos=(-0.37, -0.632), resolution=(1080, 1920)))
-# sleep(1)
-# try:
-#     assert_exists(Template(r"tpl1628666871971.png", record_pos=(-0.018, -0.809), resolution=(1080, 1920)), "有奖调查打开成功")
-#     touch(Template(r"tpl1628654344533.png", record_pos=(-0.407, -0.793), resolution=(1080, 1920)))
-#     sleep(1)
-# except Exception as e:
-#     print("打开失败")
-#     raise e
-# touch(Template(r"tpl1628654268937.png", record_pos=(-0.37, -0.313), resolution=(1080, 1920)))
-# touch(Template(r"tpl1628654287761.png", record_pos=(-0.372, 0.473), resolution=(1080, 1920)))
-# sleep(1)
-# touch(Template(r"tpl1628654314042.png", record_pos=(0.294, -0.564), resolution=(1080, 1920)))
-# touch(Template(r"tpl1628654344533.png", record_pos=(-0.407, -0.793), resolution=(1080, 1920)))
-# sleep(1)
-# swipe((500, 1344), (504, 153))
-# sleep(3)
-# touch(Template(r"tpl1628664592422.png", record_pos=(-0.373, -0.165), resolution=(1080, 1920)))
-# sleep(10)
-# try:
-#     assert_exists(Template(r"tpl1628664646850.png", record_pos=(-0.002, -0.706), resolution=(1080, 1920)), "FAQ打开成功")
-# except:
-#     print("打开失败")
-# keyevent("KEYCODE_BACK")
-# sleep(1)
-# touch(Template(r"tpl1628664735847.png", record_pos=(-0.37, 0.146), resolution=(1080, 1920)))
-# if exists(Template(r"tpl1628664777138.png", record_pos=(-0.378, 0.621), resolution=(1080, 1920))):
-#     touch(Template(r"tpl1628664777138.png", record_pos=(-0.378, 0.621), resolution=(1080, 1920)))
-#     sleep(3)
-#     act_name = dev.get_top_activity_name()
-#     print(act_name)
-#     try:
-#         assert_equal(act_name, "com.google.android.gm/.ComposeActivityGmailExternal", "邮箱弹出")
-#         keyevent("KEYCODE_BACK")
-#         sleep(0.5)
-#         keyevent("KEYCODE_BACK")
-#     except Exception as e:
-#         print("邮箱弹出失败")
-#         raise e
+# 进入mypainting
+touch(Template(r"tpl1628654205391.png", record_pos=(0.378, 0.822), resolution=(1080, 1920)))
+sleep(2)
+touch(Template(r"tpl1628654222593.png", record_pos=(-0.43, -0.82), resolution=(1080, 1920)))
+sleep(2)
+touch(Template(r"tpl1628666829596.png", record_pos=(-0.37, -0.632), resolution=(1080, 1920)))
+sleep(1)
+try:
+    assert_exists(Template(r"tpl1628666871971.png", record_pos=(-0.018, -0.809), resolution=(1080, 1920)), "有奖调查打开成功")
+    touch(Template(r"tpl1628654344533.png", record_pos=(-0.407, -0.793), resolution=(1080, 1920)))
+    sleep(1)
+except Exception as e:
+    print("打开失败")
+    raise e
+touch(Template(r"tpl1628654268937.png", record_pos=(-0.37, -0.313), resolution=(1080, 1920)))
+touch(Template(r"tpl1628654287761.png", record_pos=(-0.372, 0.473), resolution=(1080, 1920)))
+sleep(1)
+touch(Template(r"tpl1628654314042.png", record_pos=(0.294, -0.564), resolution=(1080, 1920)))
+touch(Template(r"tpl1628654344533.png", record_pos=(-0.407, -0.793), resolution=(1080, 1920)))
+sleep(1)
+swipe((500, 1344), (504, 153))
+sleep(3)
+touch(Template(r"tpl1628664592422.png", record_pos=(-0.373, -0.165), resolution=(1080, 1920)))
+sleep(10)
+try:
+    assert_exists(Template(r"tpl1628664646850.png", record_pos=(-0.002, -0.706), resolution=(1080, 1920)), "FAQ打开成功")
+except:
+    print("打开失败")
+keyevent("KEYCODE_BACK")
+sleep(1)
+touch(Template(r"tpl1628664735847.png", record_pos=(-0.37, 0.146), resolution=(1080, 1920)))
+if exists(Template(r"tpl1628664777138.png", threshold=0.8500000000000001, record_pos=(-0.378, 0.621), resolution=(1080, 1920))):
+    touch(Template(r"tpl1628664777138.png", threshold=0.8500000000000001, record_pos=(-0.378, 0.621), resolution=(1080, 1920)))
+    sleep(3)
+    act_name = dev.get_top_activity_name()
+    print(act_name)
+    try:
+        assert_equal(act_name, "com.google.android.gm/.ComposeActivityGmailExternal", "邮箱弹出")
+        keyevent("KEYCODE_BACK")
+        sleep(0.5)
+        keyevent("KEYCODE_BACK")
+    except Exception as e:
+        print("邮箱弹出失败")
+        raise e
         
-# touch(Template(r"tpl1628665851814.png", record_pos=(-0.371, 0.463), resolution=(1080, 1920)))
-# sleep(10)
-# flag = False
-# act_name = dev.get_top_activity_name()
-# try:
-#     assert_equal(act_name, "com.pixel.art.coloring.by.number/talefun.cd.sdk.webview.MyWebViewActivity", "服务条款链接是否正常跳出")
-# except:
-#     print("跳出失败")
-# if exists(Template(r"tpl1628653574859.png", record_pos=(-0.314, -0.596), resolution=(1080, 1920))):
-#     flag = True
-# try:
-#     assert_equal(flag, True, "判断是否正常显示服务条款页面")
-# except:
-#     print("显示失败")
-# keyevent('KEYCODE_BACK')
-# sleep(1)
-# touch(Template(r"tpl1628665908967.png", record_pos=(-0.372, 0.621), resolution=(1080, 1920)))
-# sleep(10)
-# act_name = dev.get_top_activity_name()
-# flag = False
-# try:
-#     assert_equal(act_name, "com.pixel.art.coloring.by.number/talefun.cd.sdk.webview.MyWebViewActivity", "隐私协议链接是否正常跳出")
-# except:
-#     print("跳出失败")
-# if exists(Template(r"tpl1628653574859.png", record_pos=(-0.314, -0.596), resolution=(1080, 1920))):
-#     flag = True
-# try:
-#     assert_equal(flag, True, "判断是否正常显示服务条款页面")
-# except:
-#     print("显示失败")
-# keyevent('KEYCODE_BACK')
-# sleep(1)
-# touch(Template(r"tpl1628654344533.png", record_pos=(-0.407, -0.793), resolution=(1080, 1920)))
-# sleep(1)
-# touch(Template(r"tpl1628668000544.png", record_pos=(-0.38, 0.82), resolution=(1080, 1920)))
-# sleep(2)
+touch(Template(r"tpl1628665851814.png", record_pos=(-0.371, 0.463), resolution=(1080, 1920)))
+sleep(10)
+flag = False
+act_name = dev.get_top_activity_name()
+try:
+    assert_equal(act_name, "com.pixel.art.coloring.by.number/talefun.cd.sdk.webview.MyWebViewActivity", "服务条款链接是否正常跳出")
+except:
+    print("跳出失败")
+if exists(Template(r"tpl1628653574859.png", record_pos=(-0.314, -0.596), resolution=(1080, 1920))):
+    flag = True
+try:
+    assert_equal(flag, True, "判断是否正常显示服务条款页面")
+except:
+    print("显示失败")
+keyevent('KEYCODE_BACK')
+sleep(1)
+touch(Template(r"tpl1628665908967.png", record_pos=(-0.372, 0.621), resolution=(1080, 1920)))
+sleep(10)
+act_name = dev.get_top_activity_name()
+flag = False
+try:
+    assert_equal(act_name, "com.pixel.art.coloring.by.number/talefun.cd.sdk.webview.MyWebViewActivity", "隐私协议链接是否正常跳出")
+except:
+    print("跳出失败")
+if exists(Template(r"tpl1628653574859.png", record_pos=(-0.314, -0.596), resolution=(1080, 1920))):
+    flag = True
+try:
+    assert_equal(flag, True, "判断是否正常显示服务条款页面")
+except:
+    print("显示失败")
+keyevent('KEYCODE_BACK')
+sleep(1)
+touch(Template(r"tpl1628654344533.png", record_pos=(-0.407, -0.793), resolution=(1080, 1920)))
+sleep(1)
+touch(Template(r"tpl1628668000544.png", record_pos=(-0.38, 0.82), resolution=(1080, 1920)))
+sleep(2)
 
-# # 进入图片
-# touch((280, 840))
-# try:
-#     wait(Template(r"tpl1628584509786.png", record_pos=(0.143, -0.789), resolution=(1080, 1920)), timeout=60)
-# except Exception as e:
-#     print("进图失败")
-#     raise e
-# else:
-#     import sys
-#     sys.path.append(r"C:\Users\xt875\Documents\airtest\Color_airtest.air")
-#     from img_RGB2location import RGB2Location
-#     rgbLoc = RGB2Location()
-# # 商品购买
-# touch(Template(r"tpl1628584509786.png", record_pos=(0.143, -0.789), resolution=(1080, 1920)))
-# sleep(2)
-# swipe((527, 1563), (538, 65))
-# sleep(2)
-# touch((777, 666))
-# touch(Template(r"tpl1628756429439.png", record_pos=(0.0, 0.694), resolution=(1080, 1920)))
-# sleep(2)
-# calm_bt = wait(Template(r"tpl1628756452348.png", record_pos=(0.003, 0.236), resolution=(1080, 1920)))
-# sleep(2)
-# touch(calm_bt)
-# sleep(2)
+# 进入图片
+touch((280, 840))
+try:
+    wait(Template(r"tpl1628584509786.png", record_pos=(0.143, -0.789), resolution=(1080, 1920)), timeout=60)
+except Exception as e:
+    print("进图失败")
+    raise e
+else:
+    import sys
+    sys.path.append(r"C:\Users\xt875\Documents\airtest\Color_airtest.air")
+    from img_RGB2location import RGB2Location
+    rgbLoc = RGB2Location()
+# 商品购买
+touch(Template(r"tpl1628584509786.png", record_pos=(0.143, -0.789), resolution=(1080, 1920)))
+sleep(2)
+swipe((527, 1563), (538, 65))
+sleep(2)
+touch((777, 666))
+touch(Template(r"tpl1628756429439.png", record_pos=(0.0, 0.694), resolution=(1080, 1920)))
+sleep(2)
+calm_bt = wait(Template(r"tpl1628756452348.png", record_pos=(0.003, 0.236), resolution=(1080, 1920)))
+sleep(2)
+touch(calm_bt)
+sleep(2)
 print("填图初始化")
-import sys
-sys.path.append(r"C:\Users\xt875\Documents\airtest\Color_airtest.air")
+# import sys
+# sys.path.append(r"C:\Users\xt875\Documents\airtest\Color_airtest.air")
     
-from img_RGB2location import RGB2Location
-rgbLoc = RGB2Location()
+# from img_RGB2location import RGB2Location
+# rgbLoc = RGB2Location()
 rgbLoc.touch_init()       
     
 rgbLoc.run_main()
+
+# 保存
+try:
+    wait(Template(r"tpl1629097462808.png", record_pos=(-0.002, 0.395), resolution=(1080, 1920)))
+except Exception as e:
+    raise e
+else:
+    touch(Template(r"tpl1629097462808.png", record_pos=(-0.002, 0.395), resolution=(1080, 1920)))
+    try:
+        wait(Template(r"tpl1629097548318.png", record_pos=(0.119, 0.017), resolution=(1080, 1920)))
+    except Exception as e:
+        raise e
+    else:
+        touch(Template(r"tpl1629097548318.png", record_pos=(0.119, 0.017), resolution=(1080, 1920)))
+        
+# 权限获取
+if exists(Template(r"tpl1629097618079.png", record_pos=(0.0, -0.164), resolution=(1080, 1920))):
+    touch(Template(r"tpl1629097628029.png", record_pos=(0.141, -0.014), resolution=(1080, 1920)))
+    sleep(2)
+    touch(Template(r"tpl1629097648055.png", record_pos=(-0.002, 0.036), resolution=(1080, 1920)))
+    sleep(1)
+# 点击喜欢
+touch(Template(r"tpl1629097675190.png", record_pos=(-0.235, 0.394), resolution=(1080, 1920)))
+sleep(3)
+try:
+    assert_exists(Template(r"tpl1629097714571.png", record_pos=(-0.234, 0.392), resolution=(1080, 1920)), "收藏成功")
+except Exception as e:
+    raise e
+
+# 返回主界面
+if exists(Template(r"tpl1628835509233.png", record_pos=(-0.007, 0.638), resolution=(1080, 1920))):
+    sleep(2)
+    touch(Template(r"tpl1628835509233.png", record_pos=(-0.007, 0.638), resolution=(1080, 1920)))
+    sleep(3)
+else:
+    self.run_main()
+
+
+
 
 # 成就大师
 touch(Template(r"tpl1628756452348.png", record_pos=(0.003, 0.236), resolution=(1080, 1920)))
 sleep(1)
 # 点击消除新手引导
 touch((943, 1851))
+
 
 
 

@@ -6,6 +6,10 @@ from airtest.cli.parser import cli_setup
 from airtest.core.android.android import Android
 from datetime import datetime
 
+import cv2
+import os
+import numpy as np
+
 # script content
 print("start...")
 
@@ -127,19 +131,151 @@ class LevelFinish():
                     Template(r"close.png",
                              record_pos=(0.361, -0.617),
                              resolution=(1080, 1920)))
+                
+    def crop_img(self):
+        print("进入裁剪")
+        Img = cv2.imread(r"C:/Users/xt875/Documents/airtest/BBB_airtest.air/screen_bbb_air.jpg")
+        cropped = Img[1430:1630, 35:1040] # 裁剪坐标为[y0:y1, x0:x1]
+        cv2.imwrite("C:/Users/xt875/Documents/airtest/BBB_airtest.air/screen_bbb_air_crop.jpg", cropped)
+#         return "C:/Users/xt875/Documents/airtest/Color_airtest.air/screen_air_crop.jpg"
+
+    def get_location_node(self, numb):
+        self.crop_img()
+        Img = cv2.imread("C:/Users/xt875/Documents/airtest/BBB_airtest.air/screen_bbb_air_crop.jpg")  #读入一幅图像
+        
+
+        # kernel_2 = np.ones((1, 1), np.uint8)  #2x2的卷积核
+
+        # kernel_3 = np.ones((3, 3), np.uint8)  #3x3的卷积核
+
+        # kernel_4 = np.ones((4, 4), np.uint8)  #4x4的卷积核
+        kernel_2 = self.set_kernel(numb)
+
+        if Img is not None:  #判断图片是否读入
+
+            HSV = cv2.cvtColor(Img, cv2.COLOR_BGR2HSV)  #把BGR图像转换为HSV格式
+        '''
+
+        HSV模型中颜色的参数分别是：色调(H)，饱和度(S)，明度(V)
+
+        下面两个值是要识别的颜色范围
+
+        '''
+
+        Lower = np.array([0, 0, 245])  #要识别颜色的下限
+
+        Upper = np.array([0, 0, 254])  #要识别的颜色的上限
+
+        #mask是把HSV图片中在颜色范围内的区域变成白色，其他区域变成黑色
+
+        mask = cv2.inRange(HSV, Lower, Upper)
+
+        #下面四行是用卷积进行滤波
+
+        erosion = cv2.erode(mask, kernel_2, iterations=1)
+
+        erosion = cv2.erode(erosion, kernel_2, iterations=1)
+
+        dilation = cv2.dilate(erosion, kernel_2, iterations=1)
+
+        dilation = cv2.dilate(dilation, kernel_2, iterations=1)
+
+        #target是把原图中的非目标颜色区域去掉剩下的图像
+
+        target = cv2.bitwise_and(Img, Img, mask=dilation)
+
+        #将滤波后的图像变成二值图像放在binary中
+
+        ret, binary = cv2.threshold(dilation, 127, 255, cv2.THRESH_BINARY)
+
+        #在binary中发现轮廓，轮廓按照面积从小到大排列
+
+        # cv2.imshow("binary", binary)
+
+        contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL,
+                                            cv2.CHAIN_APPROX_SIMPLE)
+
+        # print("++++++++contours", contours)
+        p = 0
+        node_list = []
+
+        for i in contours:  #遍历所有的轮廓
+
+            x, y, w, h = cv2.boundingRect(i)  #将轮廓分解为识别对象的左上角坐标和宽、高
+
+            #在图像上画上矩形(图片、左上角坐标、右下角坐标、颜色、线条宽度)
+
+            cv2.rectangle(Img, (x, y), (x + w, y + h), (0,255,), 3)
+
+            # 输出图像矩形中间坐标点
+            # print("中心坐标：{0},{1}".format(str(x+w/2), str(y+h/2)))
+            # print((x + w / 2, y + h / 2))
+            node_list.append((x + w / 2, y + h / 2))
+
+            #给识别对象写上标号
+
+            font = cv2.FONT_HERSHEY_SIMPLEX
+
+            cv2.putText(Img, str(p), (x - 10, y + 10), font, 1, (0, 0, 255),
+                        2)  #加减10是调整字符位置
+
+            p += 1
+
+            # print ('黄色方块的数量是',p,'个')#终端输出目标数量
+
+            # cv2.imshow('target', target)
+
+            # cv2.imshow('Mask', mask)
+
+            # cv2.imshow("prod", dilation)
+
+            # cv2.imshow('Img', Img)
+
+        cv2.imwrite('Img.png', Img)  #将画上矩形的图形保存到当前目录
+        return node_list
+    
+    def get_app_img(self):
+        os.system(r"adb shell screencap -p /sdcard/screen_bbb_air.jpg")
+        self.push_img2devices()
+    def push_img2devices(self):
+        os.system(r"adb pull /sdcard/screen_bbb_air.jpg C:/Users/xt875/Documents/airtest/BBB_airtest.air/screen_bbb_air.jpg")
+
+    def set_kernel(self, numb):
+        return np.ones((numb, numb), np.uint8)
+    
+    def weiguang(self):
+        
+        RIGHT_LOC = (1027, 1622)
+        LEFT_LOC = (46, 1609)
+        while True:
+            if self.finish_judge():
+                break
+            if not exists(Template(r"tpl1628739487070.png", threshold=0.8500000000000001, record_pos=(0.005, 0.771), resolution=(1080, 1920))):
+                print("撤回道具消失，进入伟光发球")
+                self.get_app_img()
+                try:
+                    if self.get_location_node(1)[0][0] < 540:
+                        sleep(2)
+                        touch(RIGHT_LOC, duration=2)
+                    else:
+                        sleep(2)
+                        touch(LEFT_LOC, duration=2)
+                except:
+                    pass
+                else:
+                    if exists(Template(r"tpl1626855250121.png",
+                     record_pos=(-0.006, -0.463),
+                     resolution=(1080, 1920))):
+                        touch((527, 1416))
+                        sleep(1)
+                        touch((527, 1416))
 
     def run_level_main(self):
         # 第一关
         self.level_start()
         if self.level_enter_judge():
             touch((41, 972), duration=2)
-            while True:
-                print(exists(Template(r"tpl1628739487070.png", threshold=0.8500000000000001, record_pos=(0.005, 0.771), resolution=(1080, 1920))))
-                if not exists(Template(r"tpl1628739487070.png", threshold=0.8500000000000001, record_pos=(0.005, 0.771), resolution=(1080, 1920))):
-                    print("撤回道具消失，进入伟光发球")
-                    sleep(3)
-                    touch((59, 1571), duration=2)
-                    break
+            self.weiguang()
             self.level_finish()
             # self.is_gameActivity_top()
             sleep(5)
@@ -153,6 +289,7 @@ class LevelFinish():
                      resolution=(1080, 1920)), "判断是否弹出炸弹引导遮罩层")
         if self.level_enter_judge():
             touch((969, 1246), duration=2)
+            self.weiguang()
             self.level_finish(10)
             # self.is_gameActivity_top()
             sleep(5)
@@ -167,6 +304,7 @@ class LevelFinish():
                      resolution=(1080, 1920)), "判断激光砖块tips引导遮罩层")
         if self.level_enter_judge():
             touch((540, 493), duration=2)
+            self.weiguang()
             self.level_finish()
             # self.is_gameActivity_top()
             sleep(5)
@@ -176,20 +314,15 @@ class LevelFinish():
         self.level_start()
         if self.level_enter_judge():
             touch((1017, 1208), duration=2)
-            while True:
-                print(exists(Template(r"tpl1628739487070.png", threshold=0.8500000000000001, record_pos=(0.005, 0.771), resolution=(1080, 1920))))
-                if not exists(Template(r"tpl1628739487070.png", threshold=0.8500000000000001, record_pos=(0.005, 0.771), resolution=(1080, 1920))):
-                    print("撤回道具消失，进入伟光发球")
-                    sleep(3)
-                    touch((1015, 1255), duration=2)
-                    break
+            sleep(5)
+            touch((1021, 1242), duration=2)
             self.level_finish(15)
             # self.is_gameActivity_top()
             sleep(5)
         else:
             return "关卡4，进入失败"
 
-        # reward引导
+#         reward引导
         touch((590, 275))
         sleep(2)
         touch((870, 999))
@@ -213,13 +346,7 @@ class LevelFinish():
                      resolution=(1080, 1920)), "判断气泡砖块引导遮罩层")
         if self.level_enter_judge():
             touch((103, 1153), duration=2)
-            while True:
-                print(exists(Template(r"tpl1628739487070.png", threshold=0.8500000000000001, record_pos=(0.005, 0.771), resolution=(1080, 1920))))
-                if not exists(Template(r"tpl1628739487070.png", threshold=0.8500000000000001, record_pos=(0.005, 0.771), resolution=(1080, 1920))):
-                    print("撤回道具消失，进入伟光发球")
-                    sleep(3)
-                    touch((1015, 1255), duration=2)
-                    break
+            self.weiguang()
             self.level_finish()
             # self.is_gameActivity_top()
             sleep(6)
@@ -234,13 +361,7 @@ class LevelFinish():
                      resolution=(1080, 1920)), "判断分岔砖块引导tips")
         if self.level_enter_judge():
             touch((542, 434), duration=2)
-            while True:
-                print(exists(Template(r"tpl1628739487070.png", threshold=0.8500000000000001, record_pos=(0.005, 0.771), resolution=(1080, 1920))))
-                if not exists(Template(r"tpl1628739487070.png", threshold=0.8500000000000001, record_pos=(0.005, 0.771), resolution=(1080, 1920))):
-                    print("撤回道具消失，进入伟光发球")
-                    sleep(3)
-                    touch((1027, 1625), duration=2)
-                    break
+            self.weiguang()
             self.level_finish()
             # self.is_gameActivity_top()
             sleep(8)
@@ -251,12 +372,7 @@ class LevelFinish():
         self.level_start()
         if self.level_enter_judge():
             touch((1013, 1183), duration=2)
-            sleep(5)
-            if exists(
-                    Template(r"tpl1626859183935.png",
-                             record_pos=(0.261, 0.578),
-                             resolution=(1080, 1920))):
-                touch((970, 1787))
+            self.weiguang()
             self.level_finish(15)
             # self.is_gameActivity_top()
             sleep(5)
@@ -271,6 +387,7 @@ class LevelFinish():
                      resolution=(1080, 1920)), "判断炸弹消除砖块引导遮罩层")
         if self.level_enter_judge():
             touch((60, 1170), duration=2)
+            self.weiguang()
             self.level_finish(8)
             # self.is_gameActivity_top()
             sleep(5)
@@ -289,13 +406,7 @@ class LevelFinish():
         sleep(2)
         if self.level_enter_judge():
             touch((537, 748), duration=2)
-            while True:
-                print(exists(Template(r"tpl1628739487070.png", threshold=0.8500000000000001, record_pos=(0.005, 0.771), resolution=(1080, 1920))))
-                if not exists(Template(r"tpl1628739487070.png", threshold=0.8500000000000001, record_pos=(0.005, 0.771), resolution=(1080, 1920))):
-                    print("撤回道具消失，进入伟光发球")
-                    sleep(3)
-                    touch((55, 1605), duration=2)
-                    break
+            self.weiguang()
             self.level_finish(8)
             # self.is_gameActivity_top()
             sleep(5)
@@ -312,6 +423,7 @@ class LevelFinish():
         self.level_start()
         if self.level_enter_judge():
             touch((1020, 948), duration=2)
+            self.weiguang()
             self.level_finish(15)
             # self.is_gameActivity_top()
             sleep(5)
@@ -358,6 +470,7 @@ class LevelFinish():
         self.level_start()
         if self.level_enter_judge():
             touch((1024, 856), duration=2)
+            self.weiguang()
             self.level_finish(10)
             # self.is_gameActivity_top()
             sleep(5)
@@ -374,6 +487,7 @@ class LevelFinish():
         sleep(3)
         if self.level_enter_judge():
             touch((101, 1063), duration=2)
+            self.weiguang()
             self.level_finish(8)
             # self.is_gameActivity_top()
             sleep(8)

@@ -144,40 +144,61 @@ class RGB2Location(object):
         touch((989, 102))
         sleep(3)
         touch((542, 813))
-        sleep(3)
+        sleep(2)
+        # 提升填色效率，hint内存在阴影时，也执行点击
+        self.get_app_img()
+        node_list_2 = self.get_location_node(2)
+        if node_list_2:
+            print("进入hint卷积核2")
+            for i in node_list_2:
+                touch(i)
+        sleep(2)
         touch((970, 1393))
         sleep(3)
+        # 提升填色效率，hint内存在阴影时，也执行点击
+        self.get_app_img()
+        node_list_2 = self.get_location_node(2)
+        if node_list_2:
+            print("进入hint卷积核2")
+            for i in node_list_2:
+                touch(i)
         
     def run_main(self):
         if exists(Template(r"tpl1628584509786.png", record_pos=(0.143, -0.789), resolution=(1080, 1920))):
             sleep(2)
 
             self.get_app_img()
-            node_list_4 = self.get_location_node(2)
-            if node_list_4:
-                print("进入卷积核2")
-                for i in node_list_4:
-                    touch(i)
-            else:
-                self.hint_color()
-#                 sleep(1)
-            self.get_app_img()
-            node_list_2 = self.get_location_node(1)
+            node_list_2 = self.get_location_node(2)
             if node_list_2:
-                print("进入卷积核1")
-                diff_nodes = self.difference_node(node_list_4, node_list_2)
+                print("进入卷积核2")
                 for i in node_list_2:
                     touch(i)
             else:
                 self.hint_color()
+                sleep(1)
+#             self.get_app_img()
+#             node_list_2 = self.get_location_node(2)
+#             diff_nodes = self.difference_node(node_list_3, node_list_2)
+#             if diff_nodes:
+#                 print("进入卷积核2")
+#                 for i in diff_nodes:
+#                     touch(i)
+#             else:
+#                 self.hint_color()
 #                 sleep(1)
+            self.get_app_img()
+            node_list_1 = self.get_location_node(1)
+            diff_nodes = self.difference_node(node_list_2, node_list_1)
+            if diff_nodes:
+                print("进入卷积核1")
+                
+                for i in diff_nodes:
+                    touch(i)
+            else:
+                self.hint_color()
+                sleep(1)
                 self.run_main()
-        if exists(Template(r"tpl1628835509233.png", record_pos=(-0.007, 0.638), resolution=(1080, 1920))):
-            sleep(2)
-            touch(Template(r"tpl1628835509233.png", record_pos=(-0.007, 0.638), resolution=(1080, 1920)))
-            sleep(3)
-        else:
-            self.run_main()
+        
 
 
         

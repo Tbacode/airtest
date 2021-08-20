@@ -39,12 +39,12 @@ def is_APP_resumeActivity(launch_activity):
 # 判断是否普通图完成
 def is_normalPic_finish():
     sleep(10)
-    try:
-        wait(Template(r"tpl1628671304649.png", record_pos=(-0.001, 0.403), resolution=(1080, 1920)))
-    except:
-        pass
-    else:
-        touch(Template(r"tpl1628671304649.png", record_pos=(-0.001, 0.403), resolution=(1080, 1920)))
+#     try:
+#         wait(Template(r"tpl1628671304649.png", record_pos=(-0.001, 0.403), resolution=(1080, 1920)))
+#     except:
+#         pass
+#     else:
+#         touch(Template(r"tpl1628671304649.png", record_pos=(-0.001, 0.403), resolution=(1080, 1920)))
     try:
         wait(Template(r"tpl1626772471368.png", record_pos=(-0.008, 0.636), resolution=(1080, 1920)))
 
@@ -99,7 +99,7 @@ def main(packagename, launch_activity):
 
 packagename = "com.pixel.art.coloring.by.number"
 launch_activity = "com.unity3d.player.UnityPlayerActivity"
-index = 64 # 每日终审图数量
+index = 55 # 每日终审图数量
 while index != 0:
     main(packagename, launch_activity)
     index -= 1

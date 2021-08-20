@@ -36,23 +36,23 @@ def init(packagename):
     
 
     # connect_device("HT7941A04009")
-home_bt = (554, 1800)
-packagename = "com.brick.breaker.ball.shooting.blast"
-init(packagename)
-sleep(5)
-from newuser_skip import user_skip
-user_skip.run_skip()
-sleep(2)
-# 关闭弹窗
-touch(wait(Template(r"close.png", record_pos=(0.361, -0.617), resolution=(1080, 1920))))
-sleep(3)
+# home_bt = (554, 1800)
+# packagename = "com.brick.breaker.ball.shooting.blast"
+# init(packagename)
+# sleep(5)
+# from newuser_skip import user_skip
+# user_skip.run_skip()
+# sleep(2)
+# # 关闭弹窗
+# touch(wait(Template(r"close.png", record_pos=(0.361, -0.617), resolution=(1080, 1920))))
+# sleep(3)
 
-# 进入商店
-touch((99, 1820))
-from shop_page import shop
-shop.run_shop()
-# 其余按钮坐标相对home来定，需要切换回home
-touch(home_bt)
+# # 进入商店
+# touch((99, 1820))
+# from shop_page import shop
+# shop.run_shop()
+# # 其余按钮坐标相对home来定，需要切换回home
+# touch(home_bt)
 
 from level_finish import levelfinish
 levelfinish.run_level_main()

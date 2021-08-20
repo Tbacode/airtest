@@ -69,8 +69,8 @@ class SettingPage():
         sleep(2)
         keyevent("KEYCODE_BACK")
         # 点击隐私链接
-        self.__click(self.privacy_bt, 2)
-        sleep(5)
+        self.__click(self.privacy_bt)
+        sleep(10)
         act_name = dev.get_top_activity_name()
         
         assert_equal(act_name, "com.android.chrome/org.chromium.chrome.browser.ChromeTabbedActivity", "隐私协议按钮是否正常跳出")
@@ -78,8 +78,8 @@ class SettingPage():
         keyevent("KEYCODE_BACK")
         # 点击联系我们
         self.__click(self.contact_bt)
+        sleep(10)
         act_name = dev.get_top_activity_name()
-        sleep(2)
         assert_equal(act_name, "com.google.android.gm/.ComposeActivityGmailExternal", "邮件弹窗是否正常弹出")
         dev.start_app("com.brick.breaker.ball.shooting.blast") # 进入邮箱后，返回不能回到游戏，直接调用start方法进入游戏
         # 点击开启fb登录弹窗

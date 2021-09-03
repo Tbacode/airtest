@@ -76,9 +76,11 @@ if ele_list[1] is not None:
     sleep(2)
     touch(Template(r"tpl1629278671599.png", threshold=0.8500000000000001, record_pos=(-0.377, 0.622), resolution=(1080, 1920)))
     sleep(3)
-    keyevent("KEYCODE_BACK")
+    if dev.get_top_activity_name() == "com.google.android.gm/.ComposeActivityGmailExternal":
+        keyevent("KEYCODE_BACK")
     sleep(1)
     keyevent("KEYCODE_BACK")
+    sleep(1)
     
 # 点击隐私协议
 if ele_list[2] is not None:
@@ -110,9 +112,9 @@ if ele_list[4] is not None:
     touch((794, 706))
     sleep(3)
     touch(Template(r"tpl1629280156765.png", record_pos=(0.0, 0.694), resolution=(1080, 1920)))
-    sleep(3)
+    sleep(5)
     touch(Template(r"tpl1629280184723.png", record_pos=(0.002, 0.229), resolution=(1080, 1920)))
-    sleep(2)
+    sleep(4)
     
 
 
@@ -127,14 +129,15 @@ if ele_list[4] is not None:
     touch((794, 706))
     sleep(3)
     touch(Template(r"tpl1629280156765.png", record_pos=(0.0, 0.694), resolution=(1080, 1920)))
-    sleep(3)
+    sleep(5)
     touch(Template(r"tpl1629280184723.png", record_pos=(0.002, 0.229), resolution=(1080, 1920)))
-    sleep(2)
-touch(Template(r"tpl1629279032067.png", record_pos=(-0.356, 0.813), resolution=(1080, 1920)))
-sleep(1)
+    sleep(4)
+# touch(Template(r"tpl1629279032067.png", record_pos=(-0.356, 0.813), resolution=(1080, 1920)))
+# sleep(1)
 
 # 强制等待，写入数据，否则二次启动会再次弹出隐私弹窗
 baseObject.exit_game(b_timeout=2)
 
 # dev.stop_app("coloring.color.number.happy.paint.art.drawing.puzzle")
+
 

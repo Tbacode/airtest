@@ -3,7 +3,7 @@
  * @Author       : Tommy
  * @Date         : 2021-08-09 15:43:00
  * @LastEditors  : Tommy
- * @LastEditTime : 2021-09-03 17:16:32
+ * @LastEditTime : 2021-09-03 18:51:52
 '''
 
 import cv2
@@ -41,7 +41,7 @@ class RGB2LocationLite(object):
         print("进入裁剪")
         Img = cv2.imread(
             r"C:\Users\talefun\Documents\airtest\Lite\screen_air_lite.jpg")
-        cropped = Img[0:1300, 0:1080]  # 裁剪坐标为[y0:y1, x0:x1]
+        cropped = Img[325:1300, 0:1080]  # 裁剪坐标为[y0:y1, x0:x1]
         cv2.imwrite(
             r"C:\Users\talefun\Documents\airtest\Lite\screen_air_lite_crop.jpg", cropped)
 #         return "C:/Users/xt875/Documents/airtest/Color_airtest.air/screen_air_crop.jpg"
@@ -117,7 +117,7 @@ class RGB2LocationLite(object):
             # 输出图像矩形中间坐标点
             # print("中心坐标：{0},{1}".format(str(x+w/2), str(y+h/2)))
             # print((x + w / 2, y + h / 2))
-            node_list.append((x + w / 2, y + h / 2))
+            node_list.append((x + w / 2, y + h / 2 + 325))
 
             # 给识别对象写上标号
 
@@ -146,33 +146,20 @@ class RGB2LocationLite(object):
         # 点击hint
         print("点击hint")
         touch((964, 90))
-        sleep(3)
+        sleep(5)
+        print("点击填色")
         touch((542, 813))
         sleep(2)
-        # 提升填色效率，hint内存在阴影时，也执行点击
-        self.get_app_img()
-        node_list_2 = self.get_location_node(2)
-        if node_list_2:
-            print("进入hint卷积核2")
-            for i in node_list_2:
-                touch(i)
-        sleep(2)
+        print("点击缩放")
         touch((970, 1393))
         sleep(3)
-        # 提升填色效率，hint内存在阴影时，也执行点击
-        self.get_app_img()
-        node_list_2 = self.get_location_node(2)
-        if node_list_2:
-            print("进入hint卷积核2")
-            for i in node_list_2:
-                touch(i)
 
     def run_main(self):
         if exists(Template(r"tpl1629345184802.png", record_pos=(-0.4, -0.802), resolution=(1080, 1920))):
             sleep(2)
             print("点击色号前")
             touch((109, 1620))
-            print("点击色号前")
+            print("点击色号后")
 
             self.get_app_img()
             node_list_2 = self.get_location_node(2)

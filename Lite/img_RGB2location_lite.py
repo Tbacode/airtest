@@ -3,7 +3,7 @@
  * @Author       : Tommy
  * @Date         : 2021-08-09 15:43:00
  * @LastEditors  : Tommy
- * @LastEditTime : 2021-09-02 18:22:41
+ * @LastEditTime : 2021-09-03 17:16:32
 '''
 
 import cv2
@@ -168,9 +168,11 @@ class RGB2LocationLite(object):
                 touch(i)
 
     def run_main(self):
-        if exists(Template(r"lite_coloring.air/tpl1629345184802.png", record_pos=(-0.4, -0.802), resolution=(1080, 1920))):
+        if exists(Template(r"tpl1629345184802.png", record_pos=(-0.4, -0.802), resolution=(1080, 1920))):
             sleep(2)
+            print("点击色号前")
             touch((109, 1620))
+            print("点击色号前")
 
             self.get_app_img()
             node_list_2 = self.get_location_node(2)

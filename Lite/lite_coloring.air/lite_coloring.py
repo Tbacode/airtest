@@ -1,11 +1,18 @@
+'''
+ * @Descripttion : 
+ * @Author       : Tommy
+ * @Date         : 2021-09-01 16:53:11
+ * @LastEditors  : Tommy
+ * @LastEditTime : 2021-09-03 18:09:17
+'''
 # -*- encoding=utf8 -*-
 __author__ = "talefun"
 
 from airtest.core.api import *
 import sys
 sys.path.append(r"C:\Users\talefun\Documents\airtest\Lite")
-from BaseInit import baseInit
 from img_RGB2location_lite import RGB2LocationLite
+from BaseInit import baseInit
 
 baseObject = baseInit()
 dev = baseObject.init(flag=2)
@@ -57,4 +64,10 @@ if loc_list[2] is not None:
 # 点击继续回到主界面
 touch(Template(r"tpl1629346420050.png", record_pos=(-0.001, 0.638), resolution=(1080, 1920)))
 
-dev.stop_app("coloring.color.number.happy.paint.art.drawing.puzzle")
+
+# 强制等待，写入数据，否则二次启动会再次弹出隐私弹窗
+baseObject.exit_game(b_timeout=2)
+
+# dev.stop_app("coloring.color.number.happy.paint.art.drawing.puzzle")
+
+

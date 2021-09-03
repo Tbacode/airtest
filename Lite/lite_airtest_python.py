@@ -3,14 +3,15 @@
  * @Author       : Tommy
  * @Date         : 2021-09-01 17:30:01
  * @LastEditors  : Tommy
- * @LastEditTime : 2021-09-03 14:25:23
+ * @LastEditTime : 2021-09-03 18:07:46
 '''
 import os
 import requests
 import shutil
 import zipfile
-import sys
 import time
+import sys
+sys.path.append(r"C:\Users\talefun\Documents\airtest\Lite\lite_coloring.air")
 
 
 class AirtestPython(object):
@@ -174,9 +175,9 @@ class AirtestPython(object):
 
 if __name__ == "__main__":
     ap = AirtestPython()
-    airproject_list = ["lite_newuser.air",
-                       "lite_setting.air",
-                       "lite_coloring.air"]
+    airproject_list = [  # "lite_newuser.air",
+        # "lite_setting.air",
+        "lite_coloring.air"]
 
     for lite_item in airproject_list:
         '''

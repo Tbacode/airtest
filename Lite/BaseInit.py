@@ -3,7 +3,7 @@
  * @Author       : Tommy
  * @Date         : 2021-09-01 15:04:09
  * @LastEditors  : Tommy
- * @LastEditTime : 2021-09-03 14:24:33
+ * @LastEditTime : 2021-09-03 17:46:14
 '''
 # -*- encoding=utf8 -*-
 __author__ = "Tommy"
@@ -11,6 +11,8 @@ __author__ = "Tommy"
 from airtest.core.api import *
 from airtest.core.android.android import Android
 from airtest.cli.parser import cli_setup
+import sys
+sys.path.append(r"C:\Users\talefun\Documents\airtest\Lite")
 
 
 class baseInit(object):
@@ -49,7 +51,7 @@ class baseInit(object):
         local_list = []
         if exists(sym_ele):
             for item_ele in args:
-                local = wait_element(item_ele)
+                local = self.wait_element(item_ele)
                 local_list.append(local)
         return local_list
 
@@ -57,6 +59,7 @@ class baseInit(object):
     def init(self, packagename="coloring.color.number.happy.paint.art.drawing.puzzle", flag=1):
         dev = Android()
         if flag == 1:
+            print("游戏初始化清除数据")
             dev.clear_app(packagename)
             if not dev.is_locked():
                 dev.unlock()
@@ -65,8 +68,9 @@ class baseInit(object):
 
     # 进入成功判定
     def is_enter_home(self, flag=1, timeout=10):
-        sleep(timeout)
+        
         if flag == 1:
+            sleep(timeout)
             if exists(Template(r"../tpl1629269284035.png", record_pos=(-0.001, -0.379), resolution=(1080, 1920))):
                 agree_bt = self.wait_element(Template(
                     r"../tpl1629279181598.png", record_pos=(-0.004, 0.193), resolution=(1080, 1920)))
@@ -84,4 +88,20 @@ class baseInit(object):
             sleep(timeout)
             if not exists(Template(r"../tpl1630578345457.png", record_pos=(-0.369, -0.377), resolution=(1080, 1920))):
                 timeout = 3
-                self.is_enter_game(2, timeout)
+                self.is_enter_home(2, timeout)
+
+    # 游戏退出,官方API会导致游戏数据写入失败，与预期不符
+    def exit_game(self, b_timeout=0, a_timeout=0):
+        sleep(b_timeout)
+        keyevent("KEYCODE_BACK")
+        sleep(2)
+        yes_bt = self.wait_element(Template(r"../tpl1630659384218.png", record_pos=(0.175, 0.058), resolution=(1080, 1920)))
+        if yes_bt is not None:
+            touch(yes_bt)
+            
+            
+baseObject = baseInit()
+
+
+
+

@@ -38,5 +38,7 @@ if privacy_link is not None:
 # 点击继续
 touch(agree_bt)
 
+sleep(2)
+
 
 dev.stop_app("com.pixel.art.coloring.by.number")

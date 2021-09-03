@@ -3,7 +3,7 @@
  * @Author       : Tommy
  * @Date         : 2021-09-01 16:22:10
  * @LastEditors  : Tommy
- * @LastEditTime : 2021-09-03 14:24:01
+ * @LastEditTime : 2021-09-03 16:53:55
 '''
 # -*- encoding=utf8 -*-
 from BaseInit import baseInit
@@ -47,4 +47,7 @@ if privacy_link is not None:
 # 点击继续
 touch(agree_bt)
 
-dev.stop_app("coloring.color.number.happy.paint.art.drawing.puzzle")
+# 强制等待，写入数据，否则二次启动会再次弹出隐私弹窗
+baseObject.exit_game(b_timeout=2)
+
+# dev.stop_app("coloring.color.number.happy.paint.art.drawing.puzzle")

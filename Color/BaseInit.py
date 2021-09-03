@@ -22,7 +22,7 @@ class baseInit(object):
         else:
             print("非首次进入判定节点进入")
             sleep(timeout)
-            if not exists():
+            if not exists(Template(r"../tpl1630654913186.png", record_pos=(-0.342, -0.387), resolution=(1080, 1920))):
                 timeout = 3
                 self.is_enter_home(2, timeout)
             
@@ -60,7 +60,7 @@ class baseInit(object):
         local_list = []
         if exists(sym_ele):
             for item_ele in args:
-                local = wait_element(item_ele)
+                local = self.wait_element(item_ele)
                 local_list.append(local)
         return local_list
     
@@ -68,6 +68,7 @@ class baseInit(object):
     def init(self, packagename="com.pixel.art.coloring.by.number", flag=1):
         dev = Android()
         if flag == 1:
+            print("初始化游戏启动")
             dev.clear_app(packagename)
             if not dev.is_locked():
                 dev.unlock()

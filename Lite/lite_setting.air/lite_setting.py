@@ -5,9 +5,9 @@ from airtest.core.api import *
 import sys
 
 sys.path.append(r"C:\Users\talefun\Documents\airtest\Lite")
-from BaseInit import baseInit
+from BaseInit import baseObject
 
-baseObject = baseInit()
+# baseObject = baseInit()
 dev = baseObject.init(flag=2)
 
 baseObject.is_enter_home(2)
@@ -22,7 +22,7 @@ sleep(1)
 # 进入设置界面
 touch(Template(r"tpl1629274873255.png", record_pos=(0.422, -0.794), resolution=(1080, 1920)))
 sleep(2)
-ele_list = baseObject.find_element_by_symbol(Template(r"tpl1629276407176.png", record_pos=(0.0, -0.794), resolution=(1080, 1920)), Template(r"tpl1629276435332.png", record_pos=(-0.39, -0.615), resolution=(1080, 1920)), Template(r"tpl1629276459770.png", record_pos=(-0.391, -0.116), resolution=(1080, 1920)), Template(r"tpl1629276484996.png", record_pos=(-0.39, 0.345), resolution=(1080, 1920)), Template(r"tpl1629279819991.png", record_pos=(-0.39, 0.719), resolution=(1080, 1920)))
+ele_list = baseObject.find_element_by_symbol(Template(r"tpl1629276407176.png", record_pos=(0.0, -0.794), resolution=(1080, 1920)), Template(r"tpl1630659598835.png", record_pos=(-0.39, -0.435), resolution=(1080, 1920)), Template(r"tpl1629276459770.png", record_pos=(-0.391, -0.116), resolution=(1080, 1920)), Template(r"tpl1629276484996.png", record_pos=(-0.39, 0.345), resolution=(1080, 1920)))
 # 点击问卷调查
 if ele_list[0] is not None:
     touch(ele_list[0])
@@ -41,46 +41,28 @@ if ele_list[2] is not None:
     sleep(1)
     keyevent("KEYCODE_BACK")
     
-# 点击商店按钮
-if ele_list[3] is not None:
-    touch(ele_list[3])
-    sleep(2)
-    swipe((527, 1563), (538, 65))
-    sleep(3)
-    touch((794, 706))
-    sleep(3)
-    touch(Template(r"tpl1629280156765.png", record_pos=(0.0, 0.694), resolution=(1080, 1920)))
-    sleep(3)
-    touch(Template(r"tpl1629280184723.png", record_pos=(0.002, 0.229), resolution=(1080, 1920)))
-    sleep(2)
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 
 
-touch(Template(r"tpl1629274873255.png", record_pos=(0.422, -0.794), resolution=(1080, 1920)))
-sleep(2)
-
-if ele_list[3] is not None:
-    touch(ele_list[3])
-    sleep(2)
-    swipe((527, 1563), (538, 65))
-    sleep(3)
-    touch((794, 706))
-    sleep(3)
-    touch(Template(r"tpl1629280156765.png", record_pos=(0.0, 0.694), resolution=(1080, 1920)))
-    sleep(3)
-    touch(Template(r"tpl1629280184723.png", record_pos=(0.002, 0.229), resolution=(1080, 1920)))
-    sleep(2)
-    
-
-touch(Template(r"tpl1629274873255.png", record_pos=(0.422, -0.794), resolution=(1080, 1920)))
-sleep(2)
 
 
 # 滑动列表
 swipe((500, 1344), (504, 153))
 sleep(2)
 
-ele_list = baseObject.find_element_by_symbol(Template(r"tpl1629276407176.png", record_pos=(0.0, -0.794), resolution=(1080, 1920)), Template(r"tpl1629277958167.png", record_pos=(-0.391, -0.067), resolution=(1080, 1920)), Template(r"tpl1629277977418.png", record_pos=(-0.389, 0.086), resolution=(1080, 1920)), Template(r"tpl1629277991740.png", record_pos=(-0.389, 0.389), resolution=(1080, 1920)), Template(r"tpl1629278003613.png", record_pos=(-0.393, 0.546), resolution=(1080, 1920)))
+ele_list = baseObject.find_element_by_symbol(Template(r"tpl1629276407176.png", record_pos=(0.0, -0.794), resolution=(1080, 1920)), Template(r"tpl1629277958167.png", record_pos=(-0.391, -0.067), resolution=(1080, 1920)), Template(r"tpl1629277977418.png", record_pos=(-0.389, 0.086), resolution=(1080, 1920)), Template(r"tpl1629277991740.png", record_pos=(-0.389, 0.389), resolution=(1080, 1920)), Template(r"tpl1629278003613.png", record_pos=(-0.393, 0.546), resolution=(1080, 1920)), Template(r"tpl1630659661657.png", record_pos=(-0.39, -0.137), resolution=(1080, 1920)))
 # 点击FAQ
 if ele_list[0] is not None:
     touch(ele_list[0])
@@ -117,10 +99,42 @@ if ele_list[3] is not None:
     baseObject.assert_exists_element(Template(r"tpl1629273292532.png", record_pos=(-0.311, -0.596), resolution=(1080, 1920)), "判断是否正常显示服务条款页面")
     keyevent("KEYCODE_BACK")
     sleep(1)
+    
+    
+# 点击商店按钮
+if ele_list[4] is not None:
+    touch(ele_list[4])
+    sleep(2)
+    swipe((527, 1563), (538, 65))
+    sleep(3)
+    touch((794, 706))
+    sleep(3)
+    touch(Template(r"tpl1629280156765.png", record_pos=(0.0, 0.694), resolution=(1080, 1920)))
+    sleep(3)
+    touch(Template(r"tpl1629280184723.png", record_pos=(0.002, 0.229), resolution=(1080, 1920)))
+    sleep(2)
+    
 
-keyevent("KEYCODE_BACK")
-sleep(1)
+
+touch(Template(r"tpl1629274873255.png", record_pos=(0.422, -0.794), resolution=(1080, 1920)))
+sleep(2)
+
+if ele_list[4] is not None:
+    touch(ele_list[4])
+    sleep(2)
+    swipe((527, 1563), (538, 65))
+    sleep(3)
+    touch((794, 706))
+    sleep(3)
+    touch(Template(r"tpl1629280156765.png", record_pos=(0.0, 0.694), resolution=(1080, 1920)))
+    sleep(3)
+    touch(Template(r"tpl1629280184723.png", record_pos=(0.002, 0.229), resolution=(1080, 1920)))
+    sleep(2)
 touch(Template(r"tpl1629279032067.png", record_pos=(-0.356, 0.813), resolution=(1080, 1920)))
 sleep(1)
 
-dev.stop_app("coloring.color.number.happy.paint.art.drawing.puzzle")
+# 强制等待，写入数据，否则二次启动会再次弹出隐私弹窗
+baseObject.exit_game(b_timeout=2)
+
+# dev.stop_app("coloring.color.number.happy.paint.art.drawing.puzzle")
+

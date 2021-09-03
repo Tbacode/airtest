@@ -99,7 +99,7 @@ def main(packagename, launch_activity):
 
 packagename = "com.pixel.art.coloring.by.number"
 launch_activity = "com.unity3d.player.UnityPlayerActivity"
-index = 55 # 每日终审图数量
+index = 150 # 每日终审图数量
 while index != 0:
     main(packagename, launch_activity)
     index -= 1

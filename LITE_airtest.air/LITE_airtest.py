@@ -62,34 +62,34 @@ def find_element_by_symbol(sym_ele, *args):
             local_list.append(local)
     return local_list
         
-# packagename = " coloring.color.number.happy.paint.art.drawing.puzzle"
-# launch_activity = "com.unity3d.player.UnityPlayerActivity"
+packagename = " coloring.color.number.happy.paint.art.drawing.puzzle"
+launch_activity = "com.unity3d.player.UnityPlayerActivity"
 
-# # 进入游戏
-# dev = init(packagename)
-# sleep(10)
-# # 获取隐私弹窗元素
-# agree_bt, terms_link, privacy_link = is_enter_home()
+# 进入游戏
+dev = init(packagename)
+sleep(10)
+# 获取隐私弹窗元素
+agree_bt, terms_link, privacy_link = is_enter_home()
 
-# # 点击服务条款链接
-# if terms_link is not None:
-#     touch(terms_link)
-#     sleep(10)
-#     act_name = dev.get_top_activity_name()
-#     assert_equal_element(act_name, "coloring.color.number.happy.paint.art.drawing.puzzle/talefun.cd.sdk.webview.MyWebViewActivity", "服务条款链接是否正常跳出")
-#     assert_exists_element(Template(r"tpl1629273292532.png", record_pos=(-0.311, -0.596), resolution=(1080, 1920)), "判断是否正常显示服务条款页面")
-#     keyevent("KEYCODE_BACK")
-#     sleep(1)
+# 点击服务条款链接
+if terms_link is not None:
+    touch(terms_link)
+    sleep(10)
+    act_name = dev.get_top_activity_name()
+    assert_equal_element(act_name, "coloring.color.number.happy.paint.art.drawing.puzzle/talefun.cd.sdk.webview.MyWebViewActivity", "服务条款链接是否正常跳出")
+    assert_exists_element(Template(r"tpl1629273292532.png", record_pos=(-0.311, -0.596), resolution=(1080, 1920)), "判断是否正常显示服务条款页面")
+    keyevent("KEYCODE_BACK")
+    sleep(1)
     
-# # 点击隐私协议链接
-# if privacy_link is not None:
-#     touch(privacy_link)
-#     sleep(10)
-#     act_name = dev.get_top_activity_name()
-#     assert_equal_element(act_name, "coloring.color.number.happy.paint.art.drawing.puzzle/talefun.cd.sdk.webview.MyWebViewActivity", "隐私协议链接是否正常跳出")
-#     assert_exists_element(Template(r"tpl1629273292532.png", record_pos=(-0.311, -0.596), resolution=(1080, 1920)), "判断是否正常显示隐私协议页面")
-#     keyevent("KEYCODE_BACK")
-#     sleep(1)
+# 点击隐私协议链接
+if privacy_link is not None:
+    touch(privacy_link)
+    sleep(10)
+    act_name = dev.get_top_activity_name()
+    assert_equal_element(act_name, "coloring.color.number.happy.paint.art.drawing.puzzle/talefun.cd.sdk.webview.MyWebViewActivity", "隐私协议链接是否正常跳出")
+    assert_exists_element(Template(r"tpl1629273292532.png", record_pos=(-0.311, -0.596), resolution=(1080, 1920)), "判断是否正常显示隐私协议页面")
+    keyevent("KEYCODE_BACK")
+    sleep(1)
     
 # 点击继续
 # touch(agree_bt)
@@ -102,37 +102,37 @@ def find_element_by_symbol(sym_ele, *args):
 # # 进入设置界面
 # touch(Template(r"tpl1629274873255.png", record_pos=(0.422, -0.794), resolution=(1080, 1920)))
 # sleep(2)
-# ele_list = find_element_by_symbol(Template(r"tpl1629276407176.png", record_pos=(0.0, -0.794), resolution=(1080, 1920)), Template(r"tpl1629276435332.png", record_pos=(-0.39, -0.615), resolution=(1080, 1920)), Template(r"tpl1629276459770.png", record_pos=(-0.391, -0.116), resolution=(1080, 1920)), Template(r"tpl1629276484996.png", record_pos=(-0.39, 0.345), resolution=(1080, 1920)), Template(r"tpl1629279819991.png", record_pos=(-0.39, 0.719), resolution=(1080, 1920)))
+ele_list = find_element_by_symbol(Template(r"tpl1629276407176.png", record_pos=(0.0, -0.794), resolution=(1080, 1920)), Template(r"tpl1629276435332.png", record_pos=(-0.39, -0.615), resolution=(1080, 1920)), Template(r"tpl1629276459770.png", record_pos=(-0.391, -0.116), resolution=(1080, 1920)), Template(r"tpl1629276484996.png", record_pos=(-0.39, 0.345), resolution=(1080, 1920)), Template(r"tpl1629279819991.png", record_pos=(-0.39, 0.719), resolution=(1080, 1920)))
 # 点击问卷调查
-# if ele_list[0] is not None:
-#     touch(ele_list[0])
-#     assert_exists_element(Template(r"tpl1629277476305.png", record_pos=(-0.018, -0.803), resolution=(1080, 1920)), "有奖调查打开成功", b_time=3, a_time=3)
-#     keyevent("KEYCODE_BACK")
-#     sleep(1)
-# # 点击隐藏已完成图片
-# if ele_list[1] is not None:
-#     touch(ele_list[1])
-#     sleep(1)
-# # 点击填色阴影切换
-# if ele_list[2] is not None:
-#     touch(ele_list[2])
-#     sleep(2)
-#     touch(Template(r"tpl1629277758415.png", record_pos=(0.292, -0.519), resolution=(1080, 1920)))
-#     sleep(1)
-#     keyevent("KEYCODE_BACK")
+if ele_list[0] is not None:
+    touch(ele_list[0])
+    assert_exists_element(Template(r"tpl1629277476305.png", record_pos=(-0.018, -0.803), resolution=(1080, 1920)), "有奖调查打开成功", b_time=3, a_time=3)
+    keyevent("KEYCODE_BACK")
+    sleep(1)
+# 点击隐藏已完成图片
+if ele_list[1] is not None:
+    touch(ele_list[1])
+    sleep(1)
+# 点击填色阴影切换
+if ele_list[2] is not None:
+    touch(ele_list[2])
+    sleep(2)
+    touch(Template(r"tpl1629277758415.png", record_pos=(0.292, -0.519), resolution=(1080, 1920)))
+    sleep(1)
+    keyevent("KEYCODE_BACK")
     
 # 点击商店按钮
-# if ele_list[3] is not None:
-#     touch(ele_list[3])
-#     sleep(2)
-#     swipe((527, 1563), (538, 65))
-#     sleep(3)
-#     touch((794, 706))
-#     sleep(3)
-#     touch(Template(r"tpl1629280156765.png", record_pos=(0.0, 0.694), resolution=(1080, 1920)))
-#     sleep(3)
-#     touch(Template(r"tpl1629280184723.png", record_pos=(0.002, 0.229), resolution=(1080, 1920)))
-#     sleep(2)
+if ele_list[3] is not None:
+    touch(ele_list[3])
+    sleep(2)
+    swipe((527, 1563), (538, 65))
+    sleep(3)
+    touch((794, 706))
+    sleep(3)
+    touch(Template(r"tpl1629280156765.png", record_pos=(0.0, 0.694), resolution=(1080, 1920)))
+    sleep(3)
+    touch(Template(r"tpl1629280184723.png", record_pos=(0.002, 0.229), resolution=(1080, 1920)))
+    sleep(2)
     
 
 
@@ -296,3 +296,4 @@ else:
 
 
     
+

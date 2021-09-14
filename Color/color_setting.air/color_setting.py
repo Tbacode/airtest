@@ -94,5 +94,9 @@ if ele_list[2] is not None:
     baseObject.assert_exists_element(Template(r"tpl1628653574859.png", record_pos=(-0.314, -0.596), resolution=(1080, 1920)), "判断是否正常显示服务条款页面")
     keyevent("KEYCODE_BACK")
     sleep(1)
+    
+touch(Template(r"tpl1630657665125.png", record_pos=(-0.411, -0.806), resolution=(1080, 1920)))
+    
+baseObject.exit_game(b_timeout=2)
 
-dev.stop_app("com.pixel.art.coloring.by.number")
+# dev.stop_app("com.pixel.art.coloring.by.number")

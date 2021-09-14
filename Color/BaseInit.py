@@ -9,8 +9,9 @@ class baseInit(object):
     
     # 进入成功判定
     def is_enter_home(self, flag=1, timeout=10):
-        sleep(timeout)
+        
         if flag == 1:
+            sleep(timeout)
             if exists(Template(r"../tpl1628762015501.png", record_pos=(-0.005, -0.243), resolution=(1080, 1920))):
                 agree_bt = self.wait_element(Template(r"../tpl1628062510559.png", record_pos=(0.002, 0.304), resolution=(1080, 1920)))
                 terms_link = self.wait_element(Template(r"../tpl1628062685346.png", record_pos=(-0.169, 0.099), resolution=(1080, 1920)))
@@ -74,3 +75,13 @@ class baseInit(object):
                 dev.unlock()
         dev.start_app(packagename)
         return dev
+    
+    # 游戏退出,官方API会导致游戏数据写入失败，与预期不符
+    def exit_game(self, b_timeout=0, a_timeout=0):
+        sleep(b_timeout)
+        keyevent("KEYCODE_BACK")
+        sleep(2)
+        yes_bt = self.wait_element(Template(r"../tpl1630999512618.png", record_pos=(-0.163, 0.319), resolution=(1080, 1920)))
+        if yes_bt is not None:
+            touch(yes_bt)
+

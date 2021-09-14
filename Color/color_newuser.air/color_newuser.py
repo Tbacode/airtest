@@ -41,4 +41,5 @@ touch(agree_bt)
 sleep(2)
 
 
-dev.stop_app("com.pixel.art.coloring.by.number")
+baseObject.exit_game(b_timeout=2)
+# dev.stop_app("com.pixel.art.coloring.by.number")

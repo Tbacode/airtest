@@ -16,21 +16,25 @@ from AdbOperation import AdbOperation
 
 # 点击进入首张图片
 def inter_firstPic():
-    if wait(Template(r"tpl1626776308205.png", record_pos=(-0.394, -0.382), resolution=(1080, 1920)), 600):
+    if wait(Template(r"tpl1637056383586.png", record_pos=(-0.376, -0.367), resolution=(1080, 1920)), 600):
+#         touch((350, 1316))
 
         touch((280, 850))
+#         touch((174, 614))
+          
     
 # 点击paint All
 def click_paintAll():
-    if wait(Template(r"tpl1626776359999.png", record_pos=(0.142, -0.795), resolution=(1080, 1920)), 600):
+    if wait(Template(r"tpl1639557491122.png", record_pos=(0.129, -0.783), resolution=(1080, 1920)), 300):
 
-        touch((890, 300))
+        touch(Template(r"tpl1640588790828.png", record_pos=(0.37, -0.676), resolution=(1080, 2340)))
+
     
 # 判断是否App在前台
 def is_APP_resumeActivity(launch_activity):
     result = AdbOperation()
     tag = result.isRunningAppActivity()
-    # print(tag)
+    print("当前ACTIVITY：" + tag)
     if launch_activity in tag:
         return True
     else:
@@ -38,31 +42,34 @@ def is_APP_resumeActivity(launch_activity):
 
 # 判断是否普通图完成
 def is_normalPic_finish():
-    sleep(10)
-#     try:
-#         wait(Template(r"tpl1628671304649.png", record_pos=(-0.001, 0.403), resolution=(1080, 1920)))
-#     except:
-#         pass
-#     else:
-#         touch(Template(r"tpl1628671304649.png", record_pos=(-0.001, 0.403), resolution=(1080, 1920)))
+    sleep(5)
     try:
-        wait(Template(r"tpl1626772471368.png", record_pos=(-0.008, 0.636), resolution=(1080, 1920)))
+        wait(Template(r"tpl1639557534134.png", record_pos=(0.001, 0.436), resolution=(1080, 1920)))
+    except:
+        pass
+    else:
+        try:
+            touch(Template(r"tpl1639557534134.png", record_pos=(0.001, 0.436), resolution=(1080, 1920)))
+        except:
+            pass
+    try:
+        wait(Template(r"tpl1639557559823.png", record_pos=(-0.004, 0.638), resolution=(1080, 1920)))
 
     except:
         click_animatedPic_continue()
     else:
-        sleep(3)
-        touch(Template(r"tpl1626772471368.png", record_pos=(-0.008, 0.636), resolution=(1080, 1920)))
+#         sleep(3)
+        touch(Template(r"tpl1639557559823.png", record_pos=(-0.004, 0.638), resolution=(1080, 1920)))
 # 动图完成情况继续
 def click_animatedPic_continue():
     try:
-        next_bt = wait(Template(r"tpl1606723602379.png", record_pos=(-0.001, 0.423), resolution=(1440, 2880)))
+        next_bt = wait(Template(r"tpl1639557534134.png", record_pos=(0.001, 0.436), resolution=(1080, 1920)))
     except:
         is_normalPic_finish()
     else:
         click(next_bt)
         sleep(3)
-        tag = wait(Template(r"tpl1626776155983.png", record_pos=(0.001, 0.635), resolution=(1080, 1920)))
+        tag = wait(Template(r"tpl1639557559823.png", record_pos=(-0.004, 0.638), resolution=(1080, 1920)))
         sleep(3)
         if tag:
             touch(tag)
@@ -81,14 +88,14 @@ def app_wakeup(packagename, launch_activity):
 # main方法入口
 def main(packagename, launch_activity):
     inter_firstPic()
-    sleep(3)
+    sleep(5)
     if not is_APP_resumeActivity(launch_activity):
         set_activity_backup()
         sleep(3.0)
         app_wakeup(packagename, launch_activity)
     click_paintAll()
     is_normalPic_finish()
-    sleep(3)
+    sleep(5)
     if not is_APP_resumeActivity(launch_activity):
         set_activity_backup()
         sleep(3.0)
@@ -99,7 +106,7 @@ def main(packagename, launch_activity):
 
 packagename = "com.pixel.art.coloring.by.number"
 launch_activity = "com.unity3d.player.UnityPlayerActivity"
-index = 61 # 每日终审图数量
+index = 8 # 每日终审图数量
 while index != 0:
     main(packagename, launch_activity)
     index -= 1

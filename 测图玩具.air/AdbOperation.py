@@ -33,7 +33,7 @@ class AdbOperation():
 
     def isRunningAppActivity(self):
         tag = os.popen(
-            'adb shell dumpsys activity activities | findstr "mResumedActivity"').read()
+            'adb shell dumpsys activity top | find "ACTIVITY"').read()
         return tag
 
     # adb 启动apk
